@@ -1,0 +1,36 @@
+﻿@*@using Taxiwala.ViewModel;
+@model List<DriverListViewModel>
+<h2>Bookings</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">From</th>
+            <th scope="col">To</th>
+            <th scope="col">PickUp</th>
+            <th scope="col">Price</th>
+            <th scope="col">Confirmed</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Origin</th>
+                <th scope="row">@item.Destination</th>
+                <th scope="row">@item.PickupTime</th>
+                <th scope="row">
+                    @using (Html.BeginForm())
+                    {
+                        <input type="text" name="reportName" />
+                        <input type="submit" />
+                    }
+                </th>
+                <th scope="row"> <a class="nav-link text-dark" asp-area="" asp-controller="BookinRide" asp-action="DriverSearchList">Click to Confirm</a></th>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+*@

@@ -1,0 +1,76 @@
+﻿@model List<Taxiwala.ViewModel.CustomerListViewModel>
+
+<h2>Your Booking</h2>
+@foreach(var item in Model)
+{
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">From</th>
+            <th scope="col">To</th>
+            <th scope="col">PickUp</th>
+            <th scope="col">Price</th>
+            <th scope="col">DriveName</th>
+            <th scope="col">Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th scope="row">@item.Origin</th>
+            <th scope="row">@item.Destination</th>
+            <th scope="row">@item.PickupTime</th>
+            <th scope="row">@item.Price</th>
+            <th scope="row">@item.DriverName</th>
+            <th scope="row">@item.IsConfirmed</th>
+        </tr>
+    </tbody>
+</table>
+@if (item.IsConfirmed == "Confirmed")
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Bill Reciept</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">BILL NUMBER</th>
+                <th scope="row">@item.BillNumber</th>
+
+            </tr>
+            <tr>
+                <th scope="row">BOOKING ID</th>
+                <th scope="row">@item.BookingId</th>
+
+            </tr>
+
+            <tr>
+                <th scope="row">DRIVER NAME</th>
+                <th scope="row">@item.DriverName</th>
+
+            </tr>
+            <tr>
+                <th scope="row">FROM</th>
+                <th scope="row">@item.Origin</th>
+
+            </tr>
+            <tr>
+                <th scope="row">TO</th>
+                <th scope="row">@item.Destination</th>
+
+            </tr>
+            <tr>
+                <th scope="row">PRICE</th>
+                <th scope="row">@item.Price</th>
+
+            </tr>
+                        <tr>
+                <th scope="row">PICKUP</th>
+                <th scope="row">@item.PickupTime</th>
+
+            </tr>
+
+        </tbody>
+    </table>
+}}

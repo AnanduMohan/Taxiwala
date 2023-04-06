@@ -1,0 +1,30 @@
+﻿@using Taxiwala.ViewModel;
+@model BookingViewModel
+@{
+    ViewBag.Title = "Customer Booking";
+}
+<h1>Book your Ride</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="From"></label>
+                <input asp-for="From" class="form-control" />
+                <span asp-validation-for="From" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="To"></label>
+                <input asp-for="To" class="form-control" />
+                <span asp-validation-for="From" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pickup"></label>
+                <input asp-for="Pickup" class="form-control" />
+                <span asp-validation-for="Pickup" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+</div>
