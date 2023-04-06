@@ -12,15 +12,11 @@ namespace Taxiwala.Controllers
 {
     public class BookingRideController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ApplicationDbContext _context;
 
-        public BookingRideController(ApplicationDbContext context, SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
+        public BookingRideController(ApplicationDbContext context)
         {
             _context = context;
-            _signInManager = signInManager;
-            _userManager = userManager;
         }
 
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -75,9 +71,7 @@ namespace Taxiwala.Controllers
 
             foreach (var item in booking)
             {
-                var customerName = await _context.Set<Customer>().Where(x => x.UserId.Equals(item.CustomerId)).Select(p => $"{p.FirstName} {p.LastName}").FirstOrDefaultAsync();
-                var drivename = await _context.Set<Customer>().Where(x => x.UserId.Equals(item.DriverId)).Select(p => $"{p.FirstName} {p.LastName}").FirstOrDefaultAsync();
-
+                var customerName = await _context.Set<Customer>().Where(x => x.UserId.ToString().Equals(item.CustomerId)).Select(p => $"{p.FirstName} {p.LastName}").FirstOrDefaultAsync();
                 DriverListViewModel driverList = new DriverListViewModel
                 {
                     CustomerName = customerName,
